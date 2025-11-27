@@ -1,5 +1,5 @@
 /**
- * TradeGraph Frontend Types
+ * AdamFTD Frontend Types
  *
  * Shared type definitions mirroring backend entities.
  * Keep in sync with backend/src/common/entities/*.

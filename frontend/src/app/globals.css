@@ -2,106 +2,459 @@
 @tailwind components;
 @tailwind utilities;
 
-/* TradeGraph Custom Styles */
+/* AdamFTD - Modern Visual Design System */
 
 :root {
-  /* Brand colors - can be overridden for white-label */
-  --color-primary: 59 130 246;      /* blue-500 */
-  --color-primary-dark: 37 99 235;  /* blue-600 */
-  --color-accent: 16 185 129;       /* emerald-500 */
+  /* Vibrant brand colors */
+  --color-primary: 99 102 241;        /* indigo-500 */
+  --color-primary-dark: 79 70 229;    /* indigo-600 */
+  --color-accent: 6 182 212;          /* cyan-500 */
+  --color-accent-light: 34 211 238;   /* cyan-400 */
+
+  /* Gradient colors */
+  --gradient-start: #6366f1;
+  --gradient-mid: #8b5cf6;
+  --gradient-end: #06b6d4;
 
   /* Risk status colors */
-  --color-risk-clear: 34 197 94;    /* green-500 */
-  --color-risk-review: 234 179 8;   /* yellow-500 */
-  --color-risk-flagged: 249 115 22; /* orange-500 */
-  --color-risk-sanctioned: 239 68 68; /* red-500 */
+  --color-risk-clear: 34 197 94;
+  --color-risk-review: 234 179 8;
+  --color-risk-flagged: 249 115 22;
+  --color-risk-sanctioned: 239 68 68;
+
+  /* Glass effect */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);
 }
 
-/* Smooth focus states for accessibility */
+/* Smooth scrolling and base styles */
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e0f2fe 50%, #faf5ff 100%);
+    background-attachment: fixed;
+  }
+
   *:focus-visible {
-    @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+    @apply outline-none ring-2 ring-indigo-500 ring-offset-2;
   }
 }
 
-/* Custom component styles */
+/* ═══════════════════════════════════════════════════════════════════════════
+   GLASSMORPHISM COMPONENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 @layer components {
-  /* Primary button */
-  .btn-primary {
-    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+  /* Glass card - primary container */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+      0 8px 32px rgba(99, 102, 241, 0.1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
   }
 
-  /* Secondary button */
+  .glass-dark {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Card with hover lift effect */
+  .card {
+    @apply glass rounded-2xl transition-all duration-300;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 20px 40px rgba(99, 102, 241, 0.15),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+
+  /* Gradient card variant */
+  .card-gradient {
+    @apply rounded-2xl transition-all duration-300;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,244,255,0.9) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.08);
+  }
+
+  .card-gradient:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BUTTONS WITH GRADIENTS & ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer components {
+  /* Primary gradient button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl transition-all duration-300;
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 100%);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-primary:disabled {
+    @apply opacity-50 cursor-not-allowed;
+    transform: none;
+  }
+
+  /* Secondary glass button */
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+    @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    color: #4f46e5;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+    transform: translateY(-1px);
   }
 
   /* Ghost button */
   .btn-ghost {
-    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors;
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-indigo-600 rounded-xl transition-all duration-200;
   }
 
-  /* Input field */
-  .input {
-    @apply block w-full px-3 py-2 text-sm border border-gray-300 rounded-lg placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500;
+  .btn-ghost:hover {
+    background: rgba(99, 102, 241, 0.1);
   }
 
-  /* Card container */
-  .card {
-    @apply bg-white rounded-xl border border-gray-200 shadow-sm;
+  /* Icon button with glow */
+  .btn-icon {
+    @apply p-2.5 rounded-xl transition-all duration-300;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(99, 102, 241, 0.1);
   }
 
-  /* Risk status badges */
-  .badge-clear {
-    @apply inline-flex items-center px-2 py-0.5 text-xs font-medium text-green-700 bg-green-100 rounded-full;
-  }
-
-  .badge-review {
-    @apply inline-flex items-center px-2 py-0.5 text-xs font-medium text-yellow-700 bg-yellow-100 rounded-full;
-  }
-
-  .badge-flagged {
-    @apply inline-flex items-center px-2 py-0.5 text-xs font-medium text-orange-700 bg-orange-100 rounded-full;
-  }
-
-  .badge-sanctioned {
-    @apply inline-flex items-center px-2 py-0.5 text-xs font-medium text-red-700 bg-red-100 rounded-full;
+  .btn-icon:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
   }
 }
 
-/* Data table styles */
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATED GRADIENTS & BACKGROUNDS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer utilities {
+  /* Animated gradient background */
+  .gradient-animate {
+    background: linear-gradient(-45deg, #6366f1, #8b5cf6, #06b6d4, #10b981);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Shimmer effect for loading */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.5) 50%,
+      rgba(255,255,255,0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Glow effect */
+  .glow {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.3);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   KEYFRAME ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.5); }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Animation utility classes */
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out forwards;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite;
+  }
+
+  /* Staggered animation delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FORM ELEMENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer components {
+  .input {
+    @apply block w-full px-4 py-3 text-sm rounded-xl transition-all duration-300;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(99, 102, 241, 0.1);
+  }
+
+  .input:focus {
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .input::placeholder {
+    @apply text-gray-400;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BADGES & STATUS INDICATORS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer components {
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full transition-all duration-200;
+  }
+
+  .badge-clear {
+    @apply badge;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%);
+    color: #059669;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .badge-review {
+    @apply badge;
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%);
+    color: #d97706;
+    border: 1px solid rgba(234, 179, 8, 0.3);
+  }
+
+  .badge-flagged {
+    @apply badge;
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(239, 68, 68, 0.15) 100%);
+    color: #ea580c;
+    border: 1px solid rgba(249, 115, 22, 0.3);
+  }
+
+  .badge-sanctioned {
+    @apply badge;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.15) 100%);
+    color: #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .badge-pro {
+    @apply badge;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DATA TABLE WITH MODERN STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 @layer components {
   .data-table {
     @apply w-full text-sm text-left;
   }
 
   .data-table thead {
-    @apply text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200;
+    @apply text-xs font-semibold uppercase tracking-wider;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    color: #6366f1;
   }
 
   .data-table th {
-    @apply px-4 py-3 font-medium;
+    @apply px-5 py-4;
   }
 
   .data-table tbody tr {
-    @apply border-b border-gray-100 hover:bg-gray-50 transition-colors;
+    @apply transition-all duration-200;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.08);
+  }
+
+  .data-table tbody tr:hover {
+    background: rgba(99, 102, 241, 0.03);
   }
 
   .data-table td {
-    @apply px-4 py-3;
+    @apply px-5 py-4;
   }
 }
 
-/* Search bar animation */
-@keyframes search-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+/* ═══════════════════════════════════════════════════════════════════════════
+   DECORATIVE ELEMENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer utilities {
+  /* Floating orbs for background decoration */
+  .orb {
+    @apply absolute rounded-full opacity-60 blur-3xl;
+    pointer-events: none;
   }
-  50% {
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+
+  .orb-indigo {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+  }
+
+  .orb-cyan {
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
+  }
+
+  .orb-violet {
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+  }
+
+  /* Grid pattern overlay */
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
   }
 }
 
-.search-focused {
-  animation: search-pulse 2s ease-in-out infinite;
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLLBAR STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(99, 102, 241, 0.05);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SELECTION STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: #1e1b4b;
 }

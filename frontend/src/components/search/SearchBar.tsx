@@ -1,18 +1,15 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Search, X, Loader2 } from 'lucide-react';
+import { Search, X, Loader2, Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 /**
  * SearchBar Component
  *
- * The primary search interface. Designed to feel as intuitive as Google:
- * - Natural language parsing (e.g., "steel importers Germany")
- * - Autocomplete for HS codes, countries, company names
- * - Recent searches in dropdown
- *
- * The bar transitions from simple text input to structured query as user types.
+ * Premium search interface with glassmorphism design.
+ * Features natural language parsing, intelligent autocomplete,
+ * and smooth animations for a professional user experience.
  */
 
 interface SearchBarProps {
@@ -68,8 +65,6 @@ export function SearchBar({
     e.preventDefault();
     if (!query.trim()) return;
 
-    // Parse query and navigate to search results
-    // In production, this would use NLP to extract structured filters
     const searchParams = new URLSearchParams();
     searchParams.set('q', query);
     router.push(`/search?${searchParams.toString()}`);
@@ -92,7 +87,6 @@ export function SearchBar({
   };
 
   const handleBlur = () => {
-    // Delay to allow click on suggestion
     setTimeout(() => {
       setIsFocused(false);
       onBlur?.();
@@ -100,27 +94,46 @@ export function SearchBar({
   };
 
   const sizeClasses = {
-    default: 'h-10 text-sm',
-    large: 'h-14 text-base',
+    default: 'h-12',
+    large: 'h-16',
   };
 
   return (
     <div className={`relative ${className}`}>
-      <form onSubmit={handleSubmit}>
+      {/* Glow effect behind search bar */}
+      <div
+        className={`
+          absolute inset-0 rounded-2xl blur-xl transition-all duration-500
+          ${isFocused
+            ? 'bg-gradient-to-r from-indigo-500/30 via-violet-500/30 to-cyan-500/30 scale-105'
+            : 'bg-gradient-to-r from-indigo-500/10 via-violet-500/10 to-cyan-500/10'
+          }
+        `}
+      />
+
+      <form onSubmit={handleSubmit} className="relative">
         <div
           className={`
-            relative flex items-center bg-white border-2 rounded-xl shadow-sm
-            transition-all duration-200
-            ${isFocused ? 'border-blue-500 shadow-lg' : 'border-gray-200'}
+            relative flex items-center rounded-2xl
+            transition-all duration-300 overflow-hidden
+            ${isFocused
+              ? 'bg-white shadow-2xl shadow-indigo-500/20 ring-2 ring-indigo-500/50'
+              : 'glass hover:shadow-lg'
+            }
             ${sizeClasses[size]}
           `}
         >
-          {/* Search icon */}
-          <div className="pl-4 pr-2 flex items-center">
+          {/* Search icon with gradient */}
+          <div className="pl-5 pr-3 flex items-center">
             {isLoading ? (
-              <Loader2 className="h-5 w-5 text-gray-400 animate-spin" />
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full blur-sm opacity-50" />
+                <Loader2 className="relative h-5 w-5 text-indigo-500 animate-spin" />
+              </div>
             ) : (
-              <Search className="h-5 w-5 text-gray-400" />
+              <div className={`transition-all duration-300 ${isFocused ? 'scale-110' : ''}`}>
+                <Search className={`h-5 w-5 transition-colors duration-300 ${isFocused ? 'text-indigo-500' : 'text-gray-400'}`} />
+              </div>
             )}
           </div>
 
@@ -133,7 +146,7 @@ export function SearchBar({
             onFocus={handleFocus}
             onBlur={handleBlur}
             placeholder={placeholder}
-            className="flex-1 h-full bg-transparent border-0 outline-none text-gray-900 placeholder-gray-400"
+            className="flex-1 h-full bg-transparent border-0 outline-none text-gray-900 placeholder-gray-400 text-base"
           />
 
           {/* Clear button */}
@@ -141,45 +154,47 @@ export function SearchBar({
             <button
               type="button"
               onClick={() => setQuery('')}
-              className="px-2 text-gray-400 hover:text-gray-600"
+              className="px-3 py-2 text-gray-400 hover:text-indigo-500 transition-colors rounded-full hover:bg-indigo-50"
             >
               <X className="h-4 w-4" />
             </button>
           )}
 
-          {/* Search button */}
+          {/* Search button with gradient */}
           <button
             type="submit"
-            className="h-full px-6 bg-blue-600 text-white font-medium rounded-r-xl hover:bg-blue-700 transition-colors"
+            className="h-full px-8 bg-gradient-to-r from-indigo-500 via-violet-500 to-indigo-600 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] active:scale-100 flex items-center gap-2"
           >
-            Search
+            <Sparkles className="h-4 w-4" />
+            <span>Search</span>
           </button>
         </div>
       </form>
 
-      {/* Suggestions dropdown */}
+      {/* Suggestions dropdown with glassmorphism */}
       {isFocused && suggestions.length > 0 && (
-        <div className="absolute z-50 w-full mt-2 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
+        <div className="absolute z-50 w-full mt-3 glass rounded-2xl overflow-hidden animate-scale-in shadow-xl shadow-indigo-500/10">
           {suggestions.map((suggestion, index) => (
             <button
               key={`${suggestion.type}-${suggestion.value}`}
               onClick={() => handleSuggestionClick(suggestion)}
-              className="w-full px-4 py-3 flex items-start gap-3 hover:bg-gray-50 text-left"
+              className="w-full px-5 py-4 flex items-start gap-4 hover:bg-gradient-to-r hover:from-indigo-50/50 hover:to-transparent text-left transition-all duration-200 group"
+              style={{ animationDelay: `${index * 50}ms` }}
             >
-              {/* Type indicator */}
+              {/* Type badge with gradient */}
               <span className="flex-shrink-0 mt-0.5">
                 {suggestion.type === 'hs_code' && (
-                  <span className="px-1.5 py-0.5 text-xs font-medium text-blue-700 bg-blue-100 rounded">
+                  <span className="px-2.5 py-1 text-xs font-semibold text-white bg-gradient-to-r from-indigo-500 to-violet-500 rounded-lg shadow-sm">
                     HS
                   </span>
                 )}
                 {suggestion.type === 'company' && (
-                  <span className="px-1.5 py-0.5 text-xs font-medium text-emerald-700 bg-emerald-100 rounded">
+                  <span className="px-2.5 py-1 text-xs font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg shadow-sm">
                     Co
                   </span>
                 )}
                 {suggestion.type === 'country' && (
-                  <span className="px-1.5 py-0.5 text-xs font-medium text-purple-700 bg-purple-100 rounded">
+                  <span className="px-2.5 py-1 text-xs font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg shadow-sm">
                     Loc
                   </span>
                 )}
@@ -187,15 +202,20 @@ export function SearchBar({
 
               {/* Content */}
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">
+                <p className="text-sm font-medium text-gray-900 truncate group-hover:text-indigo-600 transition-colors">
                   {suggestion.label}
                 </p>
                 {suggestion.description && (
-                  <p className="text-xs text-gray-500 truncate">
+                  <p className="text-xs text-gray-500 truncate mt-0.5">
                     {suggestion.description}
                   </p>
                 )}
               </div>
+
+              {/* Arrow indicator */}
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-500">
+                →
+              </span>
             </button>
           ))}
         </div>

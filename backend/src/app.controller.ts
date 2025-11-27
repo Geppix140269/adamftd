@@ -13,7 +13,7 @@ export class AppController {
   @ApiOperation({ summary: 'API Health Check' })
   getRoot() {
     return {
-      name: 'TradeGraph API',
+      name: 'AdamFTD API',
       version: '1.0.0',
       status: 'running',
       docs: '/api/docs',

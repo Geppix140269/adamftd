@@ -1,4 +1,4 @@
-# TradeGraph
+# AdamFTD
 
 **International Commerce Trading Platform**
 
@@ -6,7 +6,7 @@ A specialized trade intelligence and workflow platform for exporters, importers,
 
 ## Overview
 
-TradeGraph provides:
+AdamFTD provides:
 - **Shipment-based lead generation** - Discover buyers/suppliers using real customs data
 - **Compliance screening** - One-click sanctions, PEP, and adverse media checks
 - **Tariff intelligence** - Duty rates, FTA benefits, and trade measure alerts

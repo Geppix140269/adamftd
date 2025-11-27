@@ -6,7 +6,7 @@ import { Providers } from './providers';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'TradeGraph - Global Trade Intelligence Platform',
+  title: 'AdamFTD - Global Trade Intelligence Platform',
   description: 'Discover counterparties, validate risk, and execute trade workflows with real shipment data.',
 };
 
