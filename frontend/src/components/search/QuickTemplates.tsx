@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 /**
  * QuickTemplates Component
  *
- * Role-based search templates with premium glassmorphism design.
+ * Role-based search templates with AdamFTD brand colors from logo waves.
  * Each template accelerates common workflows with intelligent
  * pre-populated filters and smooth animations.
  */
@@ -19,6 +19,7 @@ interface Template {
   description: string;
   icon: React.ElementType;
   gradient: string;
+  glowColor: string;
   action: () => void;
 }
 
@@ -29,12 +30,12 @@ interface QuickTemplatesProps {
 export function QuickTemplates({ role }: QuickTemplatesProps) {
   const router = useRouter();
 
-  // Template gradients for visual variety
-  const gradients = [
-    'from-indigo-500 to-violet-500',
-    'from-cyan-500 to-blue-500',
-    'from-emerald-500 to-teal-500',
-    'from-amber-500 to-orange-500',
+  // Brand gradients from logo wave colors
+  const brandGradients = [
+    { gradient: 'from-[#00ACC1] to-[#26C6DA]', glow: 'rgba(0, 172, 193, 0.3)' },      // Teal
+    { gradient: 'from-[#4CAF50] to-[#8BC34A]', glow: 'rgba(76, 175, 80, 0.3)' },      // Green
+    { gradient: 'from-[#FF9800] to-[#FFC107]', glow: 'rgba(255, 152, 0, 0.3)' },      // Orange/Amber
+    { gradient: 'from-[#7B1FA2] to-[#9C27B0]', glow: 'rgba(123, 31, 162, 0.3)' },     // Purple
   ];
 
   // Templates by role with professional descriptions
@@ -45,7 +46,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Discover Buyers',
         description: 'Identify qualified importers by HS code and market',
         icon: Search,
-        gradient: gradients[0],
+        gradient: brandGradients[0].gradient,
+        glowColor: brandGradients[0].glow,
         action: () => router.push('/search?mode=find-buyers'),
       },
       {
@@ -53,7 +55,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Risk Assessment',
         description: 'Comprehensive sanctions and compliance screening',
         icon: Shield,
-        gradient: gradients[1],
+        gradient: brandGradients[1].gradient,
+        glowColor: brandGradients[1].glow,
         action: () => router.push('/compliance/check'),
       },
       {
@@ -61,7 +64,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Competitive Intelligence',
         description: 'Analyze competitor shipments and market positioning',
         icon: TrendingUp,
-        gradient: gradients[2],
+        gradient: brandGradients[2].gradient,
+        glowColor: brandGradients[2].glow,
         action: () => router.push('/search?mode=competitor'),
       },
       {
@@ -69,7 +73,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Market Analysis',
         description: 'Data-driven export market evaluation reports',
         icon: FileText,
-        gradient: gradients[3],
+        gradient: brandGradients[3].gradient,
+        glowColor: brandGradients[3].glow,
         action: () => router.push('/reports/market-entry'),
       },
     ],
@@ -79,7 +84,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Source Suppliers',
         description: 'Find verified exporters with proven track records',
         icon: Search,
-        gradient: gradients[0],
+        gradient: brandGradients[0].gradient,
+        glowColor: brandGradients[0].glow,
         action: () => router.push('/search?mode=find-suppliers'),
       },
       {
@@ -87,7 +93,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Supplier Verification',
         description: 'Due diligence and compliance history analysis',
         icon: Shield,
-        gradient: gradients[1],
+        gradient: brandGradients[1].gradient,
+        glowColor: brandGradients[1].glow,
         action: () => router.push('/compliance/check'),
       },
       {
@@ -95,7 +102,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Price Intelligence',
         description: 'Market-wide unit price benchmarking analytics',
         icon: TrendingUp,
-        gradient: gradients[2],
+        gradient: brandGradients[2].gradient,
+        glowColor: brandGradients[2].glow,
         action: () => router.push('/analytics/pricing'),
       },
       {
@@ -103,7 +111,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Tariff Calculator',
         description: 'Real-time duty rates and trade measures lookup',
         icon: FileText,
-        gradient: gradients[3],
+        gradient: brandGradients[3].gradient,
+        glowColor: brandGradients[3].glow,
         action: () => router.push('/tariffs'),
       },
     ],
@@ -113,7 +122,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Lead Generation',
         description: 'Identify high-volume shippers on target trade lanes',
         icon: Ship,
-        gradient: gradients[0],
+        gradient: brandGradients[0].gradient,
+        glowColor: brandGradients[0].glow,
         action: () => router.push('/search?mode=find-shippers'),
       },
       {
@@ -121,7 +131,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Lane Analytics',
         description: 'Traffic volumes, carriers, and seasonality insights',
         icon: TrendingUp,
-        gradient: gradients[1],
+        gradient: brandGradients[1].gradient,
+        glowColor: brandGradients[1].glow,
         action: () => router.push('/analytics/routes'),
       },
       {
@@ -129,7 +140,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Port Intelligence',
         description: 'Real-time terminal congestion and delay tracking',
         icon: Ship,
-        gradient: gradients[2],
+        gradient: brandGradients[2].gradient,
+        glowColor: brandGradients[2].glow,
         action: () => router.push('/ports/congestion'),
       },
       {
@@ -137,7 +149,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Rate Benchmarking',
         description: 'Freight rate analysis by trade lane and mode',
         icon: FileText,
-        gradient: gradients[3],
+        gradient: brandGradients[3].gradient,
+        glowColor: brandGradients[3].glow,
         action: () => router.push('/analytics/rates'),
       },
     ],
@@ -147,7 +160,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Export Readiness',
         description: 'Score and rank members by trade capability',
         icon: Users,
-        gradient: gradients[0],
+        gradient: brandGradients[0].gradient,
+        glowColor: brandGradients[0].glow,
         action: () => router.push('/members/readiness'),
       },
       {
@@ -155,7 +169,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Mission Planning',
         description: 'Data-driven trade mission candidate selection',
         icon: Ship,
-        gradient: gradients[1],
+        gradient: brandGradients[1].gradient,
+        glowColor: brandGradients[1].glow,
         action: () => router.push('/missions/create'),
       },
       {
@@ -163,7 +178,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Report Builder',
         description: 'Generate sector and market intelligence reports',
         icon: FileText,
-        gradient: gradients[2],
+        gradient: brandGradients[2].gradient,
+        glowColor: brandGradients[2].glow,
         action: () => router.push('/reports/builder'),
       },
       {
@@ -171,7 +187,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Member Analytics',
         description: 'Track member trade activity and performance',
         icon: Search,
-        gradient: gradients[3],
+        gradient: brandGradients[3].gradient,
+        glowColor: brandGradients[3].glow,
         action: () => router.push('/members/search'),
       },
     ],
@@ -181,7 +198,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Anomaly Detection',
         description: 'AI-flagged suspicious transaction patterns',
         icon: Shield,
-        gradient: gradients[0],
+        gradient: brandGradients[0].gradient,
+        glowColor: brandGradients[0].glow,
         action: () => router.push('/anomalies'),
       },
       {
@@ -189,7 +207,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Sector Monitoring',
         description: 'Strategic sector trade flow analysis',
         icon: TrendingUp,
-        gradient: gradients[1],
+        gradient: brandGradients[1].gradient,
+        glowColor: brandGradients[1].glow,
         action: () => router.push('/sectors'),
       },
       {
@@ -197,7 +216,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Policy Modeling',
         description: 'Simulate tariff and regulatory impact scenarios',
         icon: FileText,
-        gradient: gradients[2],
+        gradient: brandGradients[2].gradient,
+        glowColor: brandGradients[2].glow,
         action: () => router.push('/policy/simulator'),
       },
       {
@@ -205,7 +225,8 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         label: 'Entity Investigation',
         description: 'Deep entity profiles and network mapping',
         icon: Search,
-        gradient: gradients[3],
+        gradient: brandGradients[3].gradient,
+        glowColor: brandGradients[3].glow,
         action: () => router.push('/investigations'),
       },
     ],
@@ -219,17 +240,18 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         <button
           key={template.id}
           onClick={template.action}
-          className="group relative p-5 text-left rounded-2xl transition-all duration-300 hover:scale-[1.02] animate-slide-up"
+          className="group relative p-1 text-left rounded-2xl transition-all duration-300 hover:scale-[1.02] animate-slide-up"
           style={{ animationDelay: `${index * 75}ms` }}
         >
           {/* Gradient background glow on hover */}
           <div
-            className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${template.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+            className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
+            style={{ background: template.glowColor }}
           />
 
           {/* Glass card */}
-          <div className="relative glass rounded-2xl p-5 h-full border border-white/50 group-hover:border-indigo-200/50 transition-colors">
-            {/* Icon with gradient background */}
+          <div className="relative glass rounded-2xl p-5 h-full border border-white/50 group-hover:border-[#00ACC1]/30 transition-colors">
+            {/* Icon with brand gradient background */}
             <div className="flex items-start justify-between mb-4">
               <div className={`relative p-3 rounded-xl bg-gradient-to-br ${template.gradient} shadow-lg`}>
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/20 to-transparent" />
@@ -237,12 +259,12 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
               </div>
 
               {/* Arrow indicator */}
-              <ArrowRight className="h-4 w-4 text-gray-300 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all duration-300" />
+              <ArrowRight className="h-4 w-4 text-gray-300 group-hover:text-[#00838F] group-hover:translate-x-1 transition-all duration-300" />
             </div>
 
             {/* Content */}
             <div>
-              <p className="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors mb-1">
+              <p className="text-sm font-semibold text-gray-900 group-hover:text-[#00838F] transition-colors mb-1">
                 {template.label}
               </p>
               <p className="text-xs text-gray-500 leading-relaxed">

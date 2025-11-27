@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- Wave 1 - Green (top) -->
+  <path d="M20 120 Q60 40 100 80 Q140 120 180 60 Q220 0 260 40 Q300 80 340 60 Q360 50 380 70"
+        stroke="url(#greenGradient)" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <!-- Wave 2 - Orange -->
+  <path d="M20 140 Q60 100 100 130 Q140 160 180 120 Q220 80 260 110 Q300 140 340 100 Q360 80 380 90"
+        stroke="url(#orangeGradient)" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <!-- Wave 3 - Purple -->
+  <path d="M60 130 Q100 150 140 120 Q180 90 220 130"
+        stroke="#7B1FA2" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <!-- Wave 4 - Teal -->
+  <path d="M220 130 Q260 160 300 120 Q340 80 380 110"
+        stroke="url(#tealGradient)" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <!-- Wave 5 - Slate -->
+  <path d="M180 100 Q220 140 260 100 Q300 60 340 90"
+        stroke="#546E7A" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <!-- Wave 6 - Amber -->
+  <path d="M220 150 Q260 180 300 150 Q340 120 380 140"
+        stroke="url(#amberGradient)" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <defs>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4CAF50"/>
+      <stop offset="100%" stop-color="#8BC34A"/>
+    </linearGradient>
+    <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F57C00"/>
+      <stop offset="100%" stop-color="#FF9800"/>
+    </linearGradient>
+    <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ACC1"/>
+      <stop offset="100%" stop-color="#26C6DA"/>
+    </linearGradient>
+    <linearGradient id="amberGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFB300"/>
+      <stop offset="100%" stop-color="#FFC107"/>
+    </linearGradient>
+  </defs>
+</svg>

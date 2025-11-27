@@ -2,30 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-/* AdamFTD - Modern Visual Design System */
+/* AdamFTD - Modern Visual Design System
+   Brand Colors from Logo Waves:
+   - Green:  #4CAF50 → #8BC34A
+   - Orange: #F57C00 → #FF9800
+   - Purple: #7B1FA2 → #9C27B0
+   - Teal:   #00ACC1 → #26C6DA
+   - Slate:  #546E7A → #607D8B
+   - Amber:  #FFB300 → #FFC107
+*/
 
 :root {
-  /* Vibrant brand colors */
-  --color-primary: 99 102 241;        /* indigo-500 */
-  --color-primary-dark: 79 70 229;    /* indigo-600 */
-  --color-accent: 6 182 212;          /* cyan-500 */
-  --color-accent-light: 34 211 238;   /* cyan-400 */
+  /* Primary brand colors from logo waves */
+  --adam-green: 76 175 80;
+  --adam-green-light: 139 195 74;
+  --adam-orange: 245 124 0;
+  --adam-orange-light: 255 152 0;
+  --adam-purple: 123 31 162;
+  --adam-purple-light: 156 39 176;
+  --adam-teal: 0 172 193;
+  --adam-teal-light: 38 198 218;
+  --adam-slate: 84 110 122;
+  --adam-slate-light: 96 125 139;
+  --adam-amber: 255 179 0;
+  --adam-amber-light: 255 193 7;
 
-  /* Gradient colors */
-  --gradient-start: #6366f1;
-  --gradient-mid: #8b5cf6;
-  --gradient-end: #06b6d4;
+  /* Semantic colors */
+  --color-primary: var(--adam-teal);
+  --color-primary-light: var(--adam-teal-light);
+  --color-accent: var(--adam-orange);
+  --color-accent-light: var(--adam-orange-light);
+
+  /* Gradient stops */
+  --gradient-green-start: #4CAF50;
+  --gradient-green-end: #8BC34A;
+  --gradient-orange-start: #F57C00;
+  --gradient-orange-end: #FF9800;
+  --gradient-purple-start: #7B1FA2;
+  --gradient-purple-end: #9C27B0;
+  --gradient-teal-start: #00ACC1;
+  --gradient-teal-end: #26C6DA;
+  --gradient-slate-start: #546E7A;
+  --gradient-slate-end: #607D8B;
+  --gradient-amber-start: #FFB300;
+  --gradient-amber-end: #FFC107;
 
   /* Risk status colors */
-  --color-risk-clear: 34 197 94;
-  --color-risk-review: 234 179 8;
-  --color-risk-flagged: 249 115 22;
+  --color-risk-clear: 76 175 80;
+  --color-risk-review: 255 179 0;
+  --color-risk-flagged: 245 124 0;
   --color-risk-sanctioned: 239 68 68;
 
   /* Glass effect */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.3);
-  --glass-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px rgba(0, 172, 193, 0.1);
 }
 
 /* Smooth scrolling and base styles */
@@ -36,12 +67,13 @@
 
   body {
     @apply antialiased;
-    background: linear-gradient(135deg, #f0f4ff 0%, #e0f2fe 50%, #faf5ff 100%);
+    background: linear-gradient(135deg, #f8fffe 0%, #fff8f0 25%, #fdf4ff 50%, #f0fdff 75%, #f8fff8 100%);
     background-attachment: fixed;
   }
 
   *:focus-visible {
-    @apply outline-none ring-2 ring-indigo-500 ring-offset-2;
+    @apply outline-none ring-2 ring-offset-2;
+    --tw-ring-color: rgb(var(--adam-teal));
   }
 }
 
@@ -52,17 +84,17 @@
 @layer components {
   /* Glass card - primary container */
   .glass {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow:
-      0 8px 32px rgba(99, 102, 241, 0.1),
+      0 8px 32px rgba(0, 172, 193, 0.08),
       inset 0 0 0 1px rgba(255, 255, 255, 0.5);
   }
 
   .glass-dark {
-    background: rgba(30, 41, 59, 0.8);
+    background: rgba(30, 41, 59, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -76,41 +108,41 @@
   .card:hover {
     transform: translateY(-4px);
     box-shadow:
-      0 20px 40px rgba(99, 102, 241, 0.15),
+      0 20px 40px rgba(0, 172, 193, 0.12),
       inset 0 0 0 1px rgba(255, 255, 255, 0.6);
   }
 
   /* Gradient card variant */
   .card-gradient {
     @apply rounded-2xl transition-all duration-300;
-    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,244,255,0.9) 100%);
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,253,255,0.9) 100%);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(99, 102, 241, 0.1);
-    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.08);
+    border: 1px solid rgba(0, 172, 193, 0.1);
+    box-shadow: 0 4px 24px rgba(0, 172, 193, 0.06);
   }
 
   .card-gradient:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
-    border-color: rgba(99, 102, 241, 0.2);
+    box-shadow: 0 12px 40px rgba(0, 172, 193, 0.12);
+    border-color: rgba(0, 172, 193, 0.2);
   }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   BUTTONS WITH GRADIENTS & ANIMATIONS
+   BUTTONS WITH BRAND GRADIENTS
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @layer components {
-  /* Primary gradient button */
+  /* Primary gradient button - teal to green */
   .btn-primary {
     @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl transition-all duration-300;
-    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 100%);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    background: linear-gradient(135deg, #00ACC1 0%, #4CAF50 100%);
+    box-shadow: 0 4px 15px rgba(0, 172, 193, 0.35);
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 172, 193, 0.45);
   }
 
   .btn-primary:active {
@@ -127,37 +159,38 @@
     @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    color: #4f46e5;
+    border: 1px solid rgba(0, 172, 193, 0.2);
+    color: #00838F;
   }
 
   .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(99, 102, 241, 0.4);
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+    border-color: rgba(0, 172, 193, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 172, 193, 0.12);
     transform: translateY(-1px);
   }
 
   /* Ghost button */
   .btn-ghost {
-    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-indigo-600 rounded-xl transition-all duration-200;
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200;
+    color: #00838F;
   }
 
   .btn-ghost:hover {
-    background: rgba(99, 102, 241, 0.1);
+    background: rgba(0, 172, 193, 0.1);
   }
 
   /* Icon button with glow */
   .btn-icon {
     @apply p-2.5 rounded-xl transition-all duration-300;
     background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(0, 172, 193, 0.1);
   }
 
   .btn-icon:hover {
-    background: rgba(99, 102, 241, 0.1);
-    border-color: rgba(99, 102, 241, 0.3);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    background: rgba(0, 172, 193, 0.1);
+    border-color: rgba(0, 172, 193, 0.3);
+    box-shadow: 0 0 20px rgba(0, 172, 193, 0.15);
   }
 }
 
@@ -166,16 +199,32 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @layer utilities {
-  /* Animated gradient background */
+  /* Animated gradient background using brand colors */
   .gradient-animate {
-    background: linear-gradient(-45deg, #6366f1, #8b5cf6, #06b6d4, #10b981);
+    background: linear-gradient(-45deg, #00ACC1, #4CAF50, #FF9800, #7B1FA2, #26C6DA);
     background-size: 400% 400%;
     animation: gradient-shift 15s ease infinite;
   }
 
-  /* Gradient text */
+  /* Gradient text - teal to green */
   .gradient-text {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+    background: linear-gradient(135deg, #00ACC1 0%, #4CAF50 50%, #8BC34A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gradient text - orange variant */
+  .gradient-text-warm {
+    background: linear-gradient(135deg, #F57C00 0%, #FF9800 50%, #FFC107 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gradient text - purple variant */
+  .gradient-text-purple {
+    background: linear-gradient(135deg, #7B1FA2 0%, #9C27B0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -193,13 +242,21 @@
     animation: shimmer 1.5s infinite;
   }
 
-  /* Glow effect */
-  .glow {
-    box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+  /* Glow effects using brand colors */
+  .glow-teal {
+    box-shadow: 0 0 40px rgba(0, 172, 193, 0.3);
   }
 
-  .glow-cyan {
-    box-shadow: 0 0 40px rgba(6, 182, 212, 0.3);
+  .glow-green {
+    box-shadow: 0 0 40px rgba(76, 175, 80, 0.3);
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 40px rgba(255, 152, 0, 0.3);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 40px rgba(123, 31, 162, 0.3);
   }
 }
 
@@ -224,8 +281,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.5); }
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 172, 193, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(0, 172, 193, 0.5); }
 }
 
 @keyframes slide-up {
@@ -260,6 +317,11 @@
   50% { transform: translateY(-5px); }
 }
 
+@keyframes wave-flow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
 /* Animation utility classes */
 @layer utilities {
   .animate-float {
@@ -286,6 +348,10 @@
     animation: bounce-subtle 2s ease-in-out infinite;
   }
 
+  .animate-wave-flow {
+    animation: wave-flow 3s linear infinite;
+  }
+
   /* Staggered animation delays */
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
@@ -303,12 +369,12 @@
     @apply block w-full px-4 py-3 text-sm rounded-xl transition-all duration-300;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(99, 102, 241, 0.1);
+    border: 2px solid rgba(0, 172, 193, 0.1);
   }
 
   .input:focus {
-    border-color: rgba(99, 102, 241, 0.5);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    border-color: rgba(0, 172, 193, 0.5);
+    box-shadow: 0 0 0 4px rgba(0, 172, 193, 0.1);
     background: rgba(255, 255, 255, 0.95);
   }
 
@@ -328,37 +394,37 @@
 
   .badge-clear {
     @apply badge;
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%);
-    color: #059669;
-    border: 1px solid rgba(34, 197, 94, 0.3);
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(139, 195, 74, 0.15) 100%);
+    color: #2E7D32;
+    border: 1px solid rgba(76, 175, 80, 0.3);
   }
 
   .badge-review {
     @apply badge;
-    background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%);
-    color: #d97706;
-    border: 1px solid rgba(234, 179, 8, 0.3);
+    background: linear-gradient(135deg, rgba(255, 179, 0, 0.15) 0%, rgba(255, 193, 7, 0.15) 100%);
+    color: #F57F17;
+    border: 1px solid rgba(255, 179, 0, 0.3);
   }
 
   .badge-flagged {
     @apply badge;
-    background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(239, 68, 68, 0.15) 100%);
-    color: #ea580c;
-    border: 1px solid rgba(249, 115, 22, 0.3);
+    background: linear-gradient(135deg, rgba(245, 124, 0, 0.15) 0%, rgba(255, 152, 0, 0.15) 100%);
+    color: #E65100;
+    border: 1px solid rgba(245, 124, 0, 0.3);
   }
 
   .badge-sanctioned {
     @apply badge;
     background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.15) 100%);
-    color: #dc2626;
+    color: #C62828;
     border: 1px solid rgba(239, 68, 68, 0.3);
   }
 
   .badge-pro {
     @apply badge;
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #00ACC1 0%, #4CAF50 100%);
     color: white;
-    box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 172, 193, 0.3);
   }
 }
 
@@ -373,8 +439,8 @@
 
   .data-table thead {
     @apply text-xs font-semibold uppercase tracking-wider;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
-    color: #6366f1;
+    background: linear-gradient(135deg, rgba(0, 172, 193, 0.05) 0%, rgba(76, 175, 80, 0.05) 100%);
+    color: #00838F;
   }
 
   .data-table th {
@@ -383,11 +449,11 @@
 
   .data-table tbody tr {
     @apply transition-all duration-200;
-    border-bottom: 1px solid rgba(99, 102, 241, 0.08);
+    border-bottom: 1px solid rgba(0, 172, 193, 0.08);
   }
 
   .data-table tbody tr:hover {
-    background: rgba(99, 102, 241, 0.03);
+    background: rgba(0, 172, 193, 0.03);
   }
 
   .data-table td {
@@ -396,34 +462,58 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   DECORATIVE ELEMENTS
+   DECORATIVE ELEMENTS - LOGO WAVE COLORS
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @layer utilities {
-  /* Floating orbs for background decoration */
+  /* Floating orbs using brand colors */
   .orb {
-    @apply absolute rounded-full opacity-60 blur-3xl;
+    @apply absolute rounded-full opacity-50 blur-3xl;
     pointer-events: none;
   }
 
-  .orb-indigo {
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+  .orb-green {
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.4) 0%, transparent 70%);
   }
 
-  .orb-cyan {
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
+  .orb-teal {
+    background: radial-gradient(circle, rgba(0, 172, 193, 0.4) 0%, transparent 70%);
   }
 
-  .orb-violet {
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+  .orb-orange {
+    background: radial-gradient(circle, rgba(255, 152, 0, 0.35) 0%, transparent 70%);
+  }
+
+  .orb-purple {
+    background: radial-gradient(circle, rgba(123, 31, 162, 0.35) 0%, transparent 70%);
+  }
+
+  .orb-amber {
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.35) 0%, transparent 70%);
   }
 
   /* Grid pattern overlay */
   .grid-pattern {
     background-image:
-      linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(0, 172, 193, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 172, 193, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
+  }
+
+  /* Wave decoration line */
+  .wave-decoration {
+    height: 4px;
+    background: linear-gradient(90deg,
+      #4CAF50 0%,
+      #8BC34A 15%,
+      #FF9800 30%,
+      #F57C00 45%,
+      #7B1FA2 55%,
+      #00ACC1 70%,
+      #546E7A 85%,
+      #FFC107 100%
+    );
+    border-radius: 2px;
   }
 }
 
@@ -437,17 +527,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(99, 102, 241, 0.05);
+  background: rgba(0, 172, 193, 0.05);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #00ACC1 0%, #4CAF50 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #00838F 0%, #388E3C 100%);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -455,6 +545,6 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 ::selection {
-  background: rgba(99, 102, 241, 0.3);
-  color: #1e1b4b;
+  background: rgba(0, 172, 193, 0.3);
+  color: #00363a;
 }

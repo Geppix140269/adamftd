@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 /**
  * SearchBar Component
  *
- * Premium search interface with glassmorphism design.
+ * Premium search interface with AdamFTD brand colors.
  * Features natural language parsing, intelligent autocomplete,
  * and smooth animations for a professional user experience.
  */
@@ -100,13 +100,13 @@ export function SearchBar({
 
   return (
     <div className={`relative ${className}`}>
-      {/* Glow effect behind search bar */}
+      {/* Glow effect behind search bar - using brand teal/green */}
       <div
         className={`
           absolute inset-0 rounded-2xl blur-xl transition-all duration-500
           ${isFocused
-            ? 'bg-gradient-to-r from-indigo-500/30 via-violet-500/30 to-cyan-500/30 scale-105'
-            : 'bg-gradient-to-r from-indigo-500/10 via-violet-500/10 to-cyan-500/10'
+            ? 'bg-gradient-to-r from-[#00ACC1]/30 via-[#4CAF50]/30 to-[#00ACC1]/30 scale-105'
+            : 'bg-gradient-to-r from-[#00ACC1]/10 via-[#4CAF50]/10 to-[#00ACC1]/10'
           }
         `}
       />
@@ -117,22 +117,22 @@ export function SearchBar({
             relative flex items-center rounded-2xl
             transition-all duration-300 overflow-hidden
             ${isFocused
-              ? 'bg-white shadow-2xl shadow-indigo-500/20 ring-2 ring-indigo-500/50'
+              ? 'bg-white shadow-2xl shadow-[#00ACC1]/20 ring-2 ring-[#00ACC1]/50'
               : 'glass hover:shadow-lg'
             }
             ${sizeClasses[size]}
           `}
         >
-          {/* Search icon with gradient */}
+          {/* Search icon */}
           <div className="pl-5 pr-3 flex items-center">
             {isLoading ? (
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full blur-sm opacity-50" />
-                <Loader2 className="relative h-5 w-5 text-indigo-500 animate-spin" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#00ACC1] to-[#4CAF50] rounded-full blur-sm opacity-50" />
+                <Loader2 className="relative h-5 w-5 text-[#00ACC1] animate-spin" />
               </div>
             ) : (
               <div className={`transition-all duration-300 ${isFocused ? 'scale-110' : ''}`}>
-                <Search className={`h-5 w-5 transition-colors duration-300 ${isFocused ? 'text-indigo-500' : 'text-gray-400'}`} />
+                <Search className={`h-5 w-5 transition-colors duration-300 ${isFocused ? 'text-[#00838F]' : 'text-gray-400'}`} />
               </div>
             )}
           </div>
@@ -154,16 +154,16 @@ export function SearchBar({
             <button
               type="button"
               onClick={() => setQuery('')}
-              className="px-3 py-2 text-gray-400 hover:text-indigo-500 transition-colors rounded-full hover:bg-indigo-50"
+              className="px-3 py-2 text-gray-400 hover:text-[#00838F] transition-colors rounded-full hover:bg-[#00ACC1]/10"
             >
               <X className="h-4 w-4" />
             </button>
           )}
 
-          {/* Search button with gradient */}
+          {/* Search button with brand gradient */}
           <button
             type="submit"
-            className="h-full px-8 bg-gradient-to-r from-indigo-500 via-violet-500 to-indigo-600 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] active:scale-100 flex items-center gap-2"
+            className="h-full px-8 bg-gradient-to-r from-[#00ACC1] via-[#26C6DA] to-[#4CAF50] text-white font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#00ACC1]/30 hover:scale-[1.02] active:scale-100 flex items-center gap-2"
           >
             <Sparkles className="h-4 w-4" />
             <span>Search</span>
@@ -173,28 +173,28 @@ export function SearchBar({
 
       {/* Suggestions dropdown with glassmorphism */}
       {isFocused && suggestions.length > 0 && (
-        <div className="absolute z-50 w-full mt-3 glass rounded-2xl overflow-hidden animate-scale-in shadow-xl shadow-indigo-500/10">
+        <div className="absolute z-50 w-full mt-3 glass rounded-2xl overflow-hidden animate-scale-in shadow-xl shadow-[#00ACC1]/10">
           {suggestions.map((suggestion, index) => (
             <button
               key={`${suggestion.type}-${suggestion.value}`}
               onClick={() => handleSuggestionClick(suggestion)}
-              className="w-full px-5 py-4 flex items-start gap-4 hover:bg-gradient-to-r hover:from-indigo-50/50 hover:to-transparent text-left transition-all duration-200 group"
+              className="w-full px-5 py-4 flex items-start gap-4 hover:bg-gradient-to-r hover:from-[#00ACC1]/5 hover:to-transparent text-left transition-all duration-200 group"
               style={{ animationDelay: `${index * 50}ms` }}
             >
-              {/* Type badge with gradient */}
+              {/* Type badge with brand gradients */}
               <span className="flex-shrink-0 mt-0.5">
                 {suggestion.type === 'hs_code' && (
-                  <span className="px-2.5 py-1 text-xs font-semibold text-white bg-gradient-to-r from-indigo-500 to-violet-500 rounded-lg shadow-sm">
+                  <span className="px-2.5 py-1 text-xs font-semibold text-white bg-gradient-to-r from-[#00ACC1] to-[#26C6DA] rounded-lg shadow-sm">
                     HS
                   </span>
                 )}
                 {suggestion.type === 'company' && (
-                  <span className="px-2.5 py-1 text-xs font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg shadow-sm">
+                  <span className="px-2.5 py-1 text-xs font-semibold text-white bg-gradient-to-r from-[#4CAF50] to-[#8BC34A] rounded-lg shadow-sm">
                     Co
                   </span>
                 )}
                 {suggestion.type === 'country' && (
-                  <span className="px-2.5 py-1 text-xs font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg shadow-sm">
+                  <span className="px-2.5 py-1 text-xs font-semibold text-white bg-gradient-to-r from-[#FF9800] to-[#FFC107] rounded-lg shadow-sm">
                     Loc
                   </span>
                 )}
@@ -202,7 +202,7 @@ export function SearchBar({
 
               {/* Content */}
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate group-hover:text-indigo-600 transition-colors">
+                <p className="text-sm font-medium text-gray-900 truncate group-hover:text-[#00838F] transition-colors">
                   {suggestion.label}
                 </p>
                 {suggestion.description && (
@@ -213,7 +213,7 @@ export function SearchBar({
               </div>
 
               {/* Arrow indicator */}
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-500">
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity text-[#00838F]">
                 →
               </span>
             </button>
