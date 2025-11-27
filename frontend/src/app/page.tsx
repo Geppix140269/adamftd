@@ -20,9 +20,9 @@ import { SearchBar } from '@/components/search/SearchBar';
 import { QuickTemplates } from '@/components/search/QuickTemplates';
 
 /**
- * Landing / Home Page
+ * Landing / Home Page - Dark Theme
  *
- * Modern, energetic design with AdamFTD brand colors from logo waves.
+ * Modern, energetic dark design with AdamFTD brand colors from logo waves.
  * Professional copy focused on value propositions.
  */
 export default function HomePage() {
@@ -39,7 +39,7 @@ export default function HomePage() {
     <div className="min-h-screen relative overflow-hidden">
       {/* Animated background orbs using brand colors */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="orb orb-green w-[600px] h-[600px] -top-48 -left-48 animate-float" />
+        <div className="orb orb-green w-[600px] h-[600px] -top-48 -left-48 animate-float animate-glow-pulse" />
         <div className="orb orb-teal w-[500px] h-[500px] top-1/2 -right-32 animate-float delay-200" />
         <div className="orb orb-orange w-[400px] h-[400px] bottom-0 left-1/4 animate-float delay-300" />
         <div className="orb orb-purple w-[350px] h-[350px] top-1/4 right-1/4 animate-float delay-400" />
@@ -50,7 +50,7 @@ export default function HomePage() {
       <div className="fixed inset-0 grid-pattern pointer-events-none" />
 
       {/* Header */}
-      <header className="relative z-10 glass border-b border-white/20">
+      <header className="relative z-10 glass border-b border-gray-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -71,7 +71,7 @@ export default function HomePage() {
                 <a
                   key={item}
                   href={`/${item.toLowerCase()}`}
-                  className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#00838F] rounded-lg hover:bg-[#00ACC1]/10 transition-all"
+                  className="px-4 py-2 text-sm font-medium text-gray-400 hover:text-[#26C6DA] rounded-lg hover:bg-[#00ACC1]/10 transition-all"
                 >
                   {item}
                 </a>
@@ -85,8 +85,8 @@ export default function HomePage() {
                 {user.tier}
               </span>
               <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#00ACC1] to-[#4CAF50] rounded-full blur opacity-0 group-hover:opacity-50 transition-opacity" />
-                <div className="relative h-9 w-9 rounded-full bg-gradient-to-r from-[#00ACC1] to-[#4CAF50] flex items-center justify-center text-white font-semibold shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#00ACC1] to-[#4CAF50] rounded-full blur opacity-0 group-hover:opacity-60 transition-opacity" />
+                <div className="relative h-9 w-9 rounded-full bg-gradient-to-r from-[#00ACC1] to-[#4CAF50] flex items-center justify-center text-white font-semibold shadow-lg shadow-[#00ACC1]/20">
                   {user.name[0]}
                 </div>
               </div>
@@ -102,16 +102,16 @@ export default function HomePage() {
       <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24">
         {/* Hero section */}
         <div className="text-center mb-12 animate-slide-up">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00ACC1]/10 backdrop-blur-sm border border-[#00ACC1]/20 text-[#00838F] text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00ACC1]/10 backdrop-blur-sm border border-[#00ACC1]/30 text-[#26C6DA] text-sm font-medium mb-6 shadow-lg shadow-[#00ACC1]/10">
             <Zap className="w-4 h-4" />
             Powered by 2.4 billion shipment records
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
             Welcome back, <span className="gradient-text">{user.name}</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Discover qualified trade partners backed by <span className="text-[#00838F] font-semibold">verified shipment data</span>.
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            Discover qualified trade partners backed by <span className="text-[#26C6DA] font-semibold">verified shipment data</span>.
             Turn customs intelligence into closed deals.
           </p>
         </div>
@@ -128,7 +128,7 @@ export default function HomePage() {
             {['HS 8471 Germany', 'Machinery importers EU', 'Steel suppliers'].map((term) => (
               <button
                 key={term}
-                className="px-3 py-1 rounded-full bg-white/60 hover:bg-white border border-gray-200/50 hover:border-[#00ACC1]/30 transition-all text-gray-600 hover:text-[#00838F]"
+                className="px-3 py-1 rounded-full bg-gray-800/60 hover:bg-gray-700/60 border border-gray-700/50 hover:border-[#00ACC1]/40 transition-all text-gray-400 hover:text-[#26C6DA]"
               >
                 {term}
               </button>
@@ -139,7 +139,7 @@ export default function HomePage() {
         {/* Quick templates */}
         <div className="mb-12 animate-slide-up delay-200">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-white">
               Quick Actions
             </h2>
             <span className="text-sm text-gray-500">
@@ -153,9 +153,9 @@ export default function HomePage() {
         <div className="grid md:grid-cols-2 gap-6 mb-12 animate-slide-up delay-300">
           {/* Recent searches */}
           <div className="card p-6">
-            <h3 className="text-base font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <div className="p-2 rounded-lg bg-[#00ACC1]/10">
-                <Search className="h-4 w-4 text-[#00838F]" />
+            <h3 className="text-base font-semibold text-white mb-4 flex items-center gap-2">
+              <div className="p-2 rounded-lg bg-[#00ACC1]/20 border border-[#00ACC1]/30">
+                <Search className="h-4 w-4 text-[#26C6DA]" />
               </div>
               Recent Searches
             </h3>
@@ -165,16 +165,16 @@ export default function HomePage() {
                 { query: 'Automotive parts suppliers Vietnam', results: 89, time: '1 day ago' },
                 { query: 'ACME Industrial Corp', results: 1, time: '3 days ago' },
               ].map((search, i) => (
-                <li key={i} className="flex items-center justify-between p-3 rounded-xl hover:bg-[#00ACC1]/5 transition-colors group cursor-pointer">
+                <li key={i} className="flex items-center justify-between p-3 rounded-xl hover:bg-[#00ACC1]/10 transition-colors group cursor-pointer border border-transparent hover:border-[#00ACC1]/20">
                   <div>
-                    <p className="text-sm font-medium text-gray-900 group-hover:text-[#00838F] transition-colors">
+                    <p className="text-sm font-medium text-gray-200 group-hover:text-[#26C6DA] transition-colors">
                       {search.query}
                     </p>
                     <p className="text-xs text-gray-500">
                       {search.results} results · {search.time}
                     </p>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-[#00838F] group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="h-4 w-4 text-gray-600 group-hover:text-[#26C6DA] group-hover:translate-x-1 transition-all" />
                 </li>
               ))}
             </ul>
@@ -182,9 +182,9 @@ export default function HomePage() {
 
           {/* Watchlist alerts */}
           <div className="card p-6">
-            <h3 className="text-base font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <div className="p-2 rounded-lg bg-[#FF9800]/10">
-                <TrendingUp className="h-4 w-4 text-[#F57C00]" />
+            <h3 className="text-base font-semibold text-white mb-4 flex items-center gap-2">
+              <div className="p-2 rounded-lg bg-[#FF9800]/20 border border-[#FF9800]/30">
+                <TrendingUp className="h-4 w-4 text-[#FF9800]" />
               </div>
               Intelligence Alerts
             </h3>
@@ -209,13 +209,13 @@ export default function HomePage() {
                   time: '2 days ago'
                 },
               ].map((alert, i) => (
-                <li key={i} className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50/50 transition-colors cursor-pointer">
+                <li key={i} className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-800/50 transition-colors cursor-pointer border border-transparent hover:border-gray-700/50">
                   <span className={`flex-shrink-0 h-2 w-2 mt-2 rounded-full ${
-                    alert.severity === 'critical' ? 'bg-red-500' :
-                    alert.severity === 'warning' ? 'bg-[#FFB300]' : 'bg-[#00ACC1]'
+                    alert.severity === 'critical' ? 'bg-red-500 shadow-lg shadow-red-500/50' :
+                    alert.severity === 'warning' ? 'bg-[#FFB300] shadow-lg shadow-amber-500/50' : 'bg-[#00ACC1] shadow-lg shadow-cyan-500/50'
                   }`} />
                   <div className="flex-1">
-                    <p className="text-sm text-gray-900">{alert.message}</p>
+                    <p className="text-sm text-gray-200">{alert.message}</p>
                     <p className="text-xs text-gray-500">{alert.time}</p>
                   </div>
                 </li>
@@ -227,22 +227,22 @@ export default function HomePage() {
         {/* Stats banner */}
         <div className="card-gradient p-8 animate-slide-up delay-400">
           <div className="text-center mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-white mb-2">
               Global Trade Intelligence at Your Fingertips
             </h3>
-            <p className="text-gray-600">
+            <p className="text-gray-400">
               Real-time data from customs authorities worldwide
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { value: '2.4B', label: 'Shipment Records', icon: Ship, color: 'from-[#00ACC1] to-[#26C6DA]' },
-              { value: '180M', label: 'Company Profiles', icon: Building2, color: 'from-[#4CAF50] to-[#8BC34A]' },
-              { value: '240', label: 'Countries Covered', icon: Globe, color: 'from-[#FF9800] to-[#FFC107]' },
-              { value: '99.2%', label: 'Data Accuracy', icon: BarChart3, color: 'from-[#7B1FA2] to-[#9C27B0]' },
+              { value: '2.4B', label: 'Shipment Records', icon: Ship, color: 'from-[#00ACC1] to-[#26C6DA]', shadow: 'shadow-cyan-500/30' },
+              { value: '180M', label: 'Company Profiles', icon: Building2, color: 'from-[#4CAF50] to-[#8BC34A]', shadow: 'shadow-green-500/30' },
+              { value: '240', label: 'Countries Covered', icon: Globe, color: 'from-[#FF9800] to-[#FFC107]', shadow: 'shadow-orange-500/30' },
+              { value: '99.2%', label: 'Data Accuracy', icon: BarChart3, color: 'from-[#7B1FA2] to-[#9C27B0]', shadow: 'shadow-purple-500/30' },
             ].map((stat, i) => (
               <div key={i} className="text-center group">
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br ${stat.color} mb-3 group-hover:scale-110 transition-transform shadow-lg`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br ${stat.color} mb-3 group-hover:scale-110 transition-transform shadow-lg ${stat.shadow}`}>
                   <stat.icon className="h-6 w-6 text-white" />
                 </div>
                 <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">
@@ -256,15 +256,15 @@ export default function HomePage() {
 
         {/* Trust indicators */}
         <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500 animate-fade-in delay-500">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/50 border border-gray-700/50">
             <Lock className="h-4 w-4 text-[#4CAF50]" />
             <span>SOC 2 Compliant</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/50 border border-gray-700/50">
             <Shield className="h-4 w-4 text-[#00ACC1]" />
             <span>GDPR Ready</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/50 border border-gray-700/50">
             <Users className="h-4 w-4 text-[#FF9800]" />
             <span>Trusted by 2,500+ companies</span>
           </div>

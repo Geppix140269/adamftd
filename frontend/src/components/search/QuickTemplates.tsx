@@ -4,7 +4,7 @@ import { Search, Shield, TrendingUp, Users, Ship, FileText, ArrowRight } from 'l
 import { useRouter } from 'next/navigation';
 
 /**
- * QuickTemplates Component
+ * QuickTemplates Component - Dark Theme
  *
  * Role-based search templates with AdamFTD brand colors from logo waves.
  * Each template accelerates common workflows with intelligent
@@ -20,6 +20,7 @@ interface Template {
   icon: React.ElementType;
   gradient: string;
   glowColor: string;
+  shadowClass: string;
   action: () => void;
 }
 
@@ -32,10 +33,10 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
 
   // Brand gradients from logo wave colors
   const brandGradients = [
-    { gradient: 'from-[#00ACC1] to-[#26C6DA]', glow: 'rgba(0, 172, 193, 0.3)' },      // Teal
-    { gradient: 'from-[#4CAF50] to-[#8BC34A]', glow: 'rgba(76, 175, 80, 0.3)' },      // Green
-    { gradient: 'from-[#FF9800] to-[#FFC107]', glow: 'rgba(255, 152, 0, 0.3)' },      // Orange/Amber
-    { gradient: 'from-[#7B1FA2] to-[#9C27B0]', glow: 'rgba(123, 31, 162, 0.3)' },     // Purple
+    { gradient: 'from-[#00ACC1] to-[#26C6DA]', glow: 'rgba(0, 172, 193, 0.4)', shadow: 'shadow-cyan-500/30' },
+    { gradient: 'from-[#4CAF50] to-[#8BC34A]', glow: 'rgba(76, 175, 80, 0.4)', shadow: 'shadow-green-500/30' },
+    { gradient: 'from-[#FF9800] to-[#FFC107]', glow: 'rgba(255, 152, 0, 0.4)', shadow: 'shadow-orange-500/30' },
+    { gradient: 'from-[#7B1FA2] to-[#9C27B0]', glow: 'rgba(123, 31, 162, 0.4)', shadow: 'shadow-purple-500/30' },
   ];
 
   // Templates by role with professional descriptions
@@ -48,6 +49,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: Search,
         gradient: brandGradients[0].gradient,
         glowColor: brandGradients[0].glow,
+        shadowClass: brandGradients[0].shadow,
         action: () => router.push('/search?mode=find-buyers'),
       },
       {
@@ -57,6 +59,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: Shield,
         gradient: brandGradients[1].gradient,
         glowColor: brandGradients[1].glow,
+        shadowClass: brandGradients[1].shadow,
         action: () => router.push('/compliance/check'),
       },
       {
@@ -66,6 +69,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: TrendingUp,
         gradient: brandGradients[2].gradient,
         glowColor: brandGradients[2].glow,
+        shadowClass: brandGradients[2].shadow,
         action: () => router.push('/search?mode=competitor'),
       },
       {
@@ -75,6 +79,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: FileText,
         gradient: brandGradients[3].gradient,
         glowColor: brandGradients[3].glow,
+        shadowClass: brandGradients[3].shadow,
         action: () => router.push('/reports/market-entry'),
       },
     ],
@@ -86,6 +91,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: Search,
         gradient: brandGradients[0].gradient,
         glowColor: brandGradients[0].glow,
+        shadowClass: brandGradients[0].shadow,
         action: () => router.push('/search?mode=find-suppliers'),
       },
       {
@@ -95,6 +101,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: Shield,
         gradient: brandGradients[1].gradient,
         glowColor: brandGradients[1].glow,
+        shadowClass: brandGradients[1].shadow,
         action: () => router.push('/compliance/check'),
       },
       {
@@ -104,6 +111,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: TrendingUp,
         gradient: brandGradients[2].gradient,
         glowColor: brandGradients[2].glow,
+        shadowClass: brandGradients[2].shadow,
         action: () => router.push('/analytics/pricing'),
       },
       {
@@ -113,6 +121,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: FileText,
         gradient: brandGradients[3].gradient,
         glowColor: brandGradients[3].glow,
+        shadowClass: brandGradients[3].shadow,
         action: () => router.push('/tariffs'),
       },
     ],
@@ -124,6 +133,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: Ship,
         gradient: brandGradients[0].gradient,
         glowColor: brandGradients[0].glow,
+        shadowClass: brandGradients[0].shadow,
         action: () => router.push('/search?mode=find-shippers'),
       },
       {
@@ -133,6 +143,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: TrendingUp,
         gradient: brandGradients[1].gradient,
         glowColor: brandGradients[1].glow,
+        shadowClass: brandGradients[1].shadow,
         action: () => router.push('/analytics/routes'),
       },
       {
@@ -142,6 +153,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: Ship,
         gradient: brandGradients[2].gradient,
         glowColor: brandGradients[2].glow,
+        shadowClass: brandGradients[2].shadow,
         action: () => router.push('/ports/congestion'),
       },
       {
@@ -151,6 +163,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: FileText,
         gradient: brandGradients[3].gradient,
         glowColor: brandGradients[3].glow,
+        shadowClass: brandGradients[3].shadow,
         action: () => router.push('/analytics/rates'),
       },
     ],
@@ -162,6 +175,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: Users,
         gradient: brandGradients[0].gradient,
         glowColor: brandGradients[0].glow,
+        shadowClass: brandGradients[0].shadow,
         action: () => router.push('/members/readiness'),
       },
       {
@@ -171,6 +185,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: Ship,
         gradient: brandGradients[1].gradient,
         glowColor: brandGradients[1].glow,
+        shadowClass: brandGradients[1].shadow,
         action: () => router.push('/missions/create'),
       },
       {
@@ -180,6 +195,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: FileText,
         gradient: brandGradients[2].gradient,
         glowColor: brandGradients[2].glow,
+        shadowClass: brandGradients[2].shadow,
         action: () => router.push('/reports/builder'),
       },
       {
@@ -189,6 +205,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: Search,
         gradient: brandGradients[3].gradient,
         glowColor: brandGradients[3].glow,
+        shadowClass: brandGradients[3].shadow,
         action: () => router.push('/members/search'),
       },
     ],
@@ -200,6 +217,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: Shield,
         gradient: brandGradients[0].gradient,
         glowColor: brandGradients[0].glow,
+        shadowClass: brandGradients[0].shadow,
         action: () => router.push('/anomalies'),
       },
       {
@@ -209,6 +227,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: TrendingUp,
         gradient: brandGradients[1].gradient,
         glowColor: brandGradients[1].glow,
+        shadowClass: brandGradients[1].shadow,
         action: () => router.push('/sectors'),
       },
       {
@@ -218,6 +237,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: FileText,
         gradient: brandGradients[2].gradient,
         glowColor: brandGradients[2].glow,
+        shadowClass: brandGradients[2].shadow,
         action: () => router.push('/policy/simulator'),
       },
       {
@@ -227,6 +247,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
         icon: Search,
         gradient: brandGradients[3].gradient,
         glowColor: brandGradients[3].glow,
+        shadowClass: brandGradients[3].shadow,
         action: () => router.push('/investigations'),
       },
     ],
@@ -249,22 +270,22 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
             style={{ background: template.glowColor }}
           />
 
-          {/* Glass card */}
-          <div className="relative glass rounded-2xl p-5 h-full border border-white/50 group-hover:border-[#00ACC1]/30 transition-colors">
+          {/* Glass card - dark version */}
+          <div className="relative glass rounded-2xl p-5 h-full border border-gray-700/50 group-hover:border-[#00ACC1]/40 transition-all duration-300">
             {/* Icon with brand gradient background */}
             <div className="flex items-start justify-between mb-4">
-              <div className={`relative p-3 rounded-xl bg-gradient-to-br ${template.gradient} shadow-lg`}>
+              <div className={`relative p-3 rounded-xl bg-gradient-to-br ${template.gradient} shadow-lg ${template.shadowClass}`}>
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/20 to-transparent" />
                 <template.icon className="relative h-5 w-5 text-white" />
               </div>
 
               {/* Arrow indicator */}
-              <ArrowRight className="h-4 w-4 text-gray-300 group-hover:text-[#00838F] group-hover:translate-x-1 transition-all duration-300" />
+              <ArrowRight className="h-4 w-4 text-gray-600 group-hover:text-[#26C6DA] group-hover:translate-x-1 transition-all duration-300" />
             </div>
 
             {/* Content */}
             <div>
-              <p className="text-sm font-semibold text-gray-900 group-hover:text-[#00838F] transition-colors mb-1">
+              <p className="text-sm font-semibold text-gray-200 group-hover:text-[#26C6DA] transition-colors mb-1">
                 {template.label}
               </p>
               <p className="text-xs text-gray-500 leading-relaxed">
@@ -274,7 +295,7 @@ export function QuickTemplates({ role }: QuickTemplatesProps) {
 
             {/* Subtle shine effect on hover */}
             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
-              <div className="absolute -inset-full top-0 h-full w-1/2 rotate-12 transform bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-shimmer" />
+              <div className="absolute -inset-full top-0 h-full w-1/2 rotate-12 transform bg-gradient-to-r from-transparent via-white/5 to-transparent group-hover:animate-shimmer" />
             </div>
           </div>
         </button>
